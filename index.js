@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const userRoutes = require("./routes/user");
+const deviceRoutes = require("./routes/device");
 
 // express app
 const app = express();
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "hello ksa" });
 });
 app.use("/api/auth/user", userRoutes);
+app.use("/api/data/device", deviceRoutes);
 
 // listing express app and connected mongoDB
 mongoose.connect(uri, { useUnifiedTopology: true }).then(() => {
